@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
-		<groupId>br.com.tfv</groupId>
+		<groupId>br.com.ifitness</groupId>
 		<artifactId>ifitness</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -13,7 +13,7 @@
 	<packaging>ejb</packaging>
 
 	<name>iFitness EJB Core Business</name>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
