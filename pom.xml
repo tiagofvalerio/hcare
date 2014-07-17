@@ -14,6 +14,12 @@
 		<module>ifitness-model</module>
 	</modules>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.target>1.7</project.build.target>
+		<commons.version>0.0.1-SNAPSHOT</commons.version>
+	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 
@@ -22,6 +28,12 @@
 				<artifactId>ifitness-model</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>ejb</type>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.ifitness</groupId>
+				<artifactId>pattern-util-ifitness</artifactId>
+				<version>${commons.version}</version>
 			</dependency>
 
 			<dependency>

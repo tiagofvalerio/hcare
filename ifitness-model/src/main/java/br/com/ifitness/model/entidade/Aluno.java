@@ -14,5 +14,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 public class Aluno extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -3996713181349887586L;
+	
+	/**
+	 * private HistoricoMedico historicoMedico; 
+	 */
 
 }

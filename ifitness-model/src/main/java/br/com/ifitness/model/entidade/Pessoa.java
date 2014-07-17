@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,6 +53,10 @@ public class Pessoa implements Serializable {
     
     @Column(name = "idade")
     private Short idade;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sexo")
+    private TipoSexo sexo;
     
     @Column(name = "data_nascimento")
     private Date dataNascimento;
@@ -139,12 +145,21 @@ public class Pessoa implements Serializable {
 		this.tipo = tipo;
 	}
 
+	public TipoSexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(TipoSexo sexo) {
+		this.sexo = sexo;
+	}
+
 	@Override
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", sobrenome="
 				+ sobrenome + ", email=" + email + ", idade=" + idade
-				+ ", dataNascimento=" + dataNascimento + ", profissao="
-				+ profissao + ", endereco=" + endereco + "]";
+				+ ", sexo=" + sexo + ", dataNascimento=" + dataNascimento
+				+ ", profissao=" + profissao + ", endereco=" + endereco
+				+ ", tipo=" + tipo + "]";
 	}
 
 }
