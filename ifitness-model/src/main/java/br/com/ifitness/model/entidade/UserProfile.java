@@ -5,20 +5,15 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
@@ -26,12 +21,12 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import br.com.ifitness.model.ficha.FichaTreino;
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "pessoa", uniqueConstraints = { @UniqueConstraint(columnNames = {"id", "tipo" }) })
-@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING, columnDefinition = "varchar", length = 3)
+@Table(name = "user_profile")
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class Pessoa implements Serializable {
+public class UserProfile implements Serializable {
 
 	private static final long serialVersionUID = 544300113627830302L;
 
@@ -39,39 +34,41 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
+
+	@Column(name = "nome")
+	@Size(max = 30)
+	private String nome;
+
+	@Column(name = "sobrenome")
+	@Size(max = 70)
+	private String sobrenome;
+
+	@Column(name = "idade")
+	private Short idade;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "sexo")
+	private TipoSexo sexo;
+
+	@Column(name = "data_nascimento")
+	private Date dataNascimento;
+
+	@Column(name = "profissao")
+	private String profissao;
+
+	@Column(name = "tipo")
+	private TipoUser tipo;
 	
-    @Column(name = "nome")
-    @Size(max = 30)
-    private String nome;
-    
-    @Column(name = "sobrenome")
-    @Size(max = 70)
-    private String sobrenome;
-    
-    @Column(name = "email")
-    private String email;
-    
-    @Column(name = "idade")
-    private Short idade;
-    
-    @Enumerated(EnumType.STRING)
-    @Column(name = "sexo")
-    private TipoSexo sexo;
-    
-    @Column(name = "data_nascimento")
-    private Date dataNascimento;
-    
-    @Column(name="profissao")
-    private String profissao;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_id_endereco")
-    @Fetch(FetchMode.JOIN)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_id_endereco")
+	@Fetch(FetchMode.JOIN)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-    private Endereco endereco;
-    
-    @Column(name = "tipo", nullable = false, updatable = false, insertable = false)
-    private String tipo;
+	private Endereco endereco;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_id_ficha_treino")
+	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
+	private FichaTreino fichaTreino;
 
 	public Long getId() {
 		return id;
@@ -95,14 +92,6 @@ public class Pessoa implements Serializable {
 
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Short getIdade() {
@@ -137,11 +126,11 @@ public class Pessoa implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public String getTipo() {
+	public TipoUser getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(TipoUser tipo) {
 		this.tipo = tipo;
 	}
 
@@ -155,11 +144,10 @@ public class Pessoa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", sobrenome="
-				+ sobrenome + ", email=" + email + ", idade=" + idade
-				+ ", sexo=" + sexo + ", dataNascimento=" + dataNascimento
-				+ ", profissao=" + profissao + ", endereco=" + endereco
-				+ ", tipo=" + tipo + "]";
+		return "UserProfile [id=" + id + ", nome=" + nome + ", sobrenome="
+				+ sobrenome + ", idade=" + idade + ", sexo=" + sexo
+				+ ", dataNascimento=" + dataNascimento + ", profissao="
+				+ profissao + ", endereco=" + endereco + ", tipo=" + tipo + "]";
 	}
 
 }

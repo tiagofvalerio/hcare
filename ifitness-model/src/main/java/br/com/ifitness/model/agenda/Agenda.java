@@ -17,10 +17,11 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import br.com.ifitness.model.entidade.Pessoa;
+import br.com.ifitness.model.entidade.UserProfile;
 
 @Entity
 @Table(name = "agenda")
+@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class Agenda implements Serializable {
 
 	private static final long serialVersionUID = -5086373591810679643L;
@@ -34,7 +35,7 @@ public class Agenda implements Serializable {
 	@JoinColumn(name = "fk_id_pessoa")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Fetch(FetchMode.JOIN)
-	private Pessoa pessoa;
+	private UserProfile pessoa;
 
 	@Column(name = "data_inicial_evento")
 	private Date dataInicialEvento;
@@ -65,11 +66,11 @@ public class Agenda implements Serializable {
 		this.id = id;
 	}
 
-	public Pessoa getPessoa() {
+	public UserProfile getPessoa() {
 		return pessoa;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
+	public void setPessoa(UserProfile pessoa) {
 		this.pessoa = pessoa;
 	}
 
