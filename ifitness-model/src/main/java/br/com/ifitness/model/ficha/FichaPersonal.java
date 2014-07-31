@@ -11,7 +11,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "ficha_treino")
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class FichaTreino implements Serializable {
+public class FichaPersonal implements Serializable {
 
 	private static final long serialVersionUID = 6454418026066861032L;
 

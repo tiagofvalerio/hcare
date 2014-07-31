@@ -21,7 +21,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import br.com.ifitness.model.ficha.FichaTreino;
+import br.com.ifitness.model.ficha.FichaPersonal;
 
 @Entity
 @Table(name = "user_profile")
@@ -56,19 +56,20 @@ public class UserProfile implements Serializable {
 	@Column(name = "profissao")
 	private String profissao;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo")
 	private TipoUser tipo;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_endereco")
 	@Fetch(FetchMode.JOIN)
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	private Endereco endereco;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_ficha_treino")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-	private FichaTreino fichaTreino;
+	private FichaPersonal fichaTreino;
 
 	public Long getId() {
 		return id;
