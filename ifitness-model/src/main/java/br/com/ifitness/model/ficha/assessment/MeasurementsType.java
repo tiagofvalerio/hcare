@@ -1,6 +1,6 @@
-package br.com.ifitness.model.ficha.avaliacao;
+package br.com.ifitness.model.ficha.assessment;
 
-public enum TipoMedidas {
+public enum MeasurementsType {
 	DOBRA_CUTANEA_SUBESCAPULAR,
 	DOBRA_CUTANEA_SUPRAILIACA,
 	DOBRA_CUTANEA_TRICIPITAL,

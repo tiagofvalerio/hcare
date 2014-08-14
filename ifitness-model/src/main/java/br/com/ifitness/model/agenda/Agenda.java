@@ -17,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import br.com.ifitness.model.entidade.UserProfile;
+import br.com.ifitness.model.entity.UserProfile;
 
 @Entity
 @Table(name = "agenda")
@@ -32,31 +32,31 @@ public class Agenda implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "fk_id_pessoa")
+	@JoinColumn(name = "fk_id_user_profile")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Fetch(FetchMode.JOIN)
-	private UserProfile pessoa;
+	private UserProfile userProfile;
 
-	@Column(name = "data_inicial_evento")
-	private Date dataInicialEvento;
+	@Column(name = "event_start_date")
+	private Date eventStartDate;
 
-	@Column(name = "data_final_evento")
-	private Date dataFinalEvento;
+	@Column(name = "event_final_date")
+	private Date eventFinalDate;
 
-	@Column(name = "titulo_evento")
-	private String tituloEvento;
+	@Column(name = "event_title")
+	private String eventTitle;
 
-	@Column(name = "descricao_evento")
-	private String descricaoEvento;
+	@Column(name = "event_description")
+	private String eventDescription;
 
-	@Column(name = "local_evento")
-	private String localEvento;
+	@Column(name = "event_location")
+	private String eventLocation;
 
-	@Column(name = "dura_dia_todo")
-	private Boolean duraDiaTodo;
+	@Column(name = "all_day")
+	private Boolean allDay;
 
-	@Column(name = "repete_evento")
-	private Boolean repeteEvento;
+	@Column(name = "repeat")
+	private Boolean repeat;
 
 	public Long getId() {
 		return id;
@@ -66,68 +66,67 @@ public class Agenda implements Serializable {
 		this.id = id;
 	}
 
-	public UserProfile getPessoa() {
-		return pessoa;
+	public UserProfile getUserProfile() {
+		return userProfile;
 	}
 
-	public void setPessoa(UserProfile pessoa) {
-		this.pessoa = pessoa;
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
 	}
 
-	public Date getDataInicialEvento() {
-		return dataInicialEvento;
+	public Date getEventStartDate() {
+		return eventStartDate;
 	}
 
-	public void setDataInicialEvento(Date dataInicialEvento) {
-		this.dataInicialEvento = dataInicialEvento;
+	public void setEventStartDate(Date eventStartDate) {
+		this.eventStartDate = eventStartDate;
 	}
 
-	public Date getDataFinalEvento() {
-		return dataFinalEvento;
+	public Date getEventFinalDate() {
+		return eventFinalDate;
 	}
 
-	public void setDataFinalEvento(Date dataFinalEvento) {
-		this.dataFinalEvento = dataFinalEvento;
+	public void setEventFinalDate(Date eventFinalDate) {
+		this.eventFinalDate = eventFinalDate;
 	}
 
-	public String getTituloEvento() {
-		return tituloEvento;
+	public String getEventTitle() {
+		return eventTitle;
 	}
 
-	public void setTituloEvento(String tituloEvento) {
-		this.tituloEvento = tituloEvento;
+	public void setEventTitle(String eventTitle) {
+		this.eventTitle = eventTitle;
 	}
 
-	public String getDescricaoEvento() {
-		return descricaoEvento;
+	public String getEventDescription() {
+		return eventDescription;
 	}
 
-	public void setDescricaoEvento(String descricaoEvento) {
-		this.descricaoEvento = descricaoEvento;
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
 	}
 
-	public String getLocalEvento() {
-		return localEvento;
+	public String getEventLocation() {
+		return eventLocation;
 	}
 
-	public void setLocalEvento(String localEvento) {
-		this.localEvento = localEvento;
+	public void setEventLocation(String eventLocation) {
+		this.eventLocation = eventLocation;
 	}
 
-	public Boolean getDuraDiaTodo() {
-		return duraDiaTodo;
+	public Boolean getAllDay() {
+		return allDay;
 	}
 
-	public void setDuraDiaTodo(Boolean duraDiaTodo) {
-		this.duraDiaTodo = duraDiaTodo;
+	public void setAllDay(Boolean allDay) {
+		this.allDay = allDay;
 	}
 
-	public Boolean getRepeteEvento() {
-		return repeteEvento;
+	public Boolean getRepeat() {
+		return repeat;
 	}
 
-	public void setRepeteEvento(Boolean repeteEvento) {
-		this.repeteEvento = repeteEvento;
+	public void setRepeat(Boolean repeat) {
+		this.repeat = repeat;
 	}
-
 }

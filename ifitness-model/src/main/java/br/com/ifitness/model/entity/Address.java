@@ -1,4 +1,4 @@
-package br.com.ifitness.model.entidade;
+package br.com.ifitness.model.entity;
 
 import java.io.Serializable;
 
@@ -13,9 +13,9 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-@Table(name = "endereco")
+@Table(name = "address")
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class Endereco implements Serializable{
+public class Address implements Serializable{
 
 	private static final long serialVersionUID = -3082038060104139793L;
 
@@ -24,14 +24,14 @@ public class Endereco implements Serializable{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "cidade")
-	private String cidade;
+	@Column(name = "city")
+	private String city;
 	
-	@Column(name = "uf")
-	private String uf;
+	@Column(name = "state")
+	private String state;
 	
-	@Column(name = "cep")
-	private String cep;
+	@Column(name = "zip_code")
+	private String zipCode;
 
 	public Long getId() {
 		return id;
@@ -41,34 +41,33 @@ public class Endereco implements Serializable{
 		this.id = id;
 	}
 
-	public String getCidade() {
-		return cidade;
+	public String getCity() {
+		return city;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getUf() {
-		return uf;
+	public String getState() {
+		return state;
 	}
 
-	public void setUf(String uf) {
-		this.uf = uf;
+	public void setState(String state) {
+		this.state = state;
 	}
 
-	public String getCep() {
-		return cep;
+	public String getZipCode() {
+		return zipCode;
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	@Override
 	public String toString() {
-		return "Endereco [id=" + id + ", cidade=" + cidade + ", uf=" + uf
-				+ ", cep=" + cep + "]";
+		return "Address [id=" + id + ", city=" + city + ", state=" + state
+				+ ", zipCode=" + zipCode + "]";
 	}
-	
 }

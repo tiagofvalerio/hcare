@@ -1,4 +1,4 @@
-package br.com.ifitness.model.entidade;
+package br.com.ifitness.model.entity;
 
 import java.io.Serializable;
 
