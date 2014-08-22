@@ -26,7 +26,7 @@ public class HealthPlan implements Serializable {
 	private static final long serialVersionUID = 5464514513002370374L;
 
 	@OneToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE,
-			CascadeType.REFRESH }, fetch = FetchType.LAZY, mappedBy = "fichaAluno")
+			CascadeType.REFRESH }, fetch = FetchType.LAZY, mappedBy = "healthPlan")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	@Fetch(FetchMode.JOIN)
 	private List<FitnessAssessment> fitnessAssessments;

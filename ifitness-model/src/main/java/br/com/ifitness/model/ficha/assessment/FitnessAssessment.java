@@ -1,11 +1,14 @@
 package br.com.ifitness.model.ficha.assessment;
 
 import java.io.Serializable;
-import java.util.Map;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -20,12 +23,45 @@ public class FitnessAssessment implements Serializable {
 
 	private static final long serialVersionUID = 8295039453208715337L;
 
-	private Map<MeasurementsType, Integer> subcutaneousMeasurements;
+	@Column(name = "weight")
+	private Double weight;
+	
+	@Column(name = "height")
+	private Double height;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_physical_plan")
+	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
+	private BodyComposition bodyComposition;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_id_health_plan")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	private HealthPlan healthPlan;
+	
+	public BodyComposition getBodyComposition() {
+		return bodyComposition;
+	}
+
+	public void setBodyComposition(BodyComposition bodyComposition) {
+		this.bodyComposition = bodyComposition;
+	}
+
+	public Double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public Double getHeight() {
+		return height;
+	}
+
+	public void setHeight(Double height) {
+		this.height = height;
+	}
 
 	public HealthPlan getHealthPlan() {
 		return healthPlan;
@@ -33,15 +69,6 @@ public class FitnessAssessment implements Serializable {
 
 	public void setHealthPlan(HealthPlan healthPlan) {
 		this.healthPlan = healthPlan;
-	}
-
-	public Map<MeasurementsType, Integer> getSubcutaneousMeasurements() {
-		return subcutaneousMeasurements;
-	}
-
-	public void setSubcutaneousMeasurements(
-			Map<MeasurementsType, Integer> subcutaneousMeasurements) {
-		this.subcutaneousMeasurements = subcutaneousMeasurements;
 	}
 
 }
