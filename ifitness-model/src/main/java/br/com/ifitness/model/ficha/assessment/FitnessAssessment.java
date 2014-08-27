@@ -6,6 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -23,12 +26,17 @@ public class FitnessAssessment implements Serializable {
 
 	private static final long serialVersionUID = 8295039453208715337L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
+
 	@Column(name = "weight")
 	private Double weight;
-	
+
 	@Column(name = "height")
 	private Double height;
-	
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_physical_plan")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
@@ -38,7 +46,15 @@ public class FitnessAssessment implements Serializable {
 	@JoinColumn(name = "fk_id_health_plan")
 	@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 	private HealthPlan healthPlan;
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public BodyComposition getBodyComposition() {
 		return bodyComposition;
 	}

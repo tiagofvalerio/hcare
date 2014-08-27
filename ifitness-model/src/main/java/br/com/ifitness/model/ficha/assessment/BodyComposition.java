@@ -2,7 +2,11 @@ package br.com.ifitness.model.ficha.assessment;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -15,104 +19,131 @@ public class BodyComposition implements Serializable {
 
 	private static final long serialVersionUID = -7014757235651945969L;
 
-	private Double subscapularMeasurement;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-	private Double suprailiacMeasurement;
+	@Column(name = "subscapular")
+	private Double subscapular;
 
-	private Double tricepsMeasurement;
+	@Column(name = "suprailiac")
+	private Double suprailiac;
 
-	private Double bicepsMeasurement;
+	@Column(name = "triceps")
+	private Double triceps;
 
-	private Double abdominalMeasurement;
+	@Column(name = "biceps")
+	private Double biceps;
 
-	private Double thighMeasurement;
+	@Column(name = "abdominal")
+	private Double abdominal;
 
-	private Double chestMeasurement;
+	@Column(name = "thigh")
+	private Double thigh;
 
-	private Double midaxillaryMeasurement;
+	@Column(name = "chest")
+	private Double chest;
 
-	private Double calfMeasurement;
+	@Column(name = "midaxillary")
+	private Double midaxillary;
 
+	@Column(name = "calf")
+	private Double calf;
+
+	@Column(name = "body_density")
 	private Double bodyDensity;
 
-	private Double BodyFat;
+	@Column(name = "body_fat")
+	private Double bodyFat;
 
-	private Double BodyFreeFat;
+	@Column(name = "body_free_fat")
+	private Double bodyFreeFat;
 
-	private Double BodyFatWeight;
+	@Column(name = "body_fat_weight")
+	private Double bodyFatWeight;
 
-	private Double BodyFreeFatWeight;
+	@Column(name = "body_fat_weight")
+	private Double bodyFreeFatWeight;
 
-	public Double getSubscapularMeasurement() {
-		return subscapularMeasurement;
+	public Long getId() {
+		return id;
 	}
 
-	public void setSubscapularMeasurement(Double subscapularMeasurement) {
-		this.subscapularMeasurement = subscapularMeasurement;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Double getSuprailiacMeasurement() {
-		return suprailiacMeasurement;
+	public Double getSubscapular() {
+		return subscapular;
 	}
 
-	public void setSuprailiacMeasurement(Double suprailiacMeasurement) {
-		this.suprailiacMeasurement = suprailiacMeasurement;
+	public void setSubscapular(Double subscapular) {
+		this.subscapular = subscapular;
 	}
 
-	public Double getTricepsMeasurement() {
-		return tricepsMeasurement;
+	public Double getSuprailiac() {
+		return suprailiac;
 	}
 
-	public void setTricepsMeasurement(Double tricepsMeasurement) {
-		this.tricepsMeasurement = tricepsMeasurement;
+	public void setSuprailiac(Double suprailiac) {
+		this.suprailiac = suprailiac;
 	}
 
-	public Double getBicepsMeasurement() {
-		return bicepsMeasurement;
+	public Double getTriceps() {
+		return triceps;
 	}
 
-	public void setBicepsMeasurement(Double bicepsMeasurement) {
-		this.bicepsMeasurement = bicepsMeasurement;
+	public void setTriceps(Double triceps) {
+		this.triceps = triceps;
 	}
 
-	public Double getAbdominalMeasurement() {
-		return abdominalMeasurement;
+	public Double getBiceps() {
+		return biceps;
 	}
 
-	public void setAbdominalMeasurement(Double abdominalMeasurement) {
-		this.abdominalMeasurement = abdominalMeasurement;
+	public void setBiceps(Double biceps) {
+		this.biceps = biceps;
 	}
 
-	public Double getThighMeasurement() {
-		return thighMeasurement;
+	public Double getAbdominal() {
+		return abdominal;
 	}
 
-	public void setThighMeasurement(Double thighMeasurement) {
-		this.thighMeasurement = thighMeasurement;
+	public void setAbdominal(Double abdominal) {
+		this.abdominal = abdominal;
 	}
 
-	public Double getChestMeasurement() {
-		return chestMeasurement;
+	public Double getThigh() {
+		return thigh;
 	}
 
-	public void setChestMeasurement(Double chestMeasurement) {
-		this.chestMeasurement = chestMeasurement;
+	public void setThigh(Double thigh) {
+		this.thigh = thigh;
 	}
 
-	public Double getMidaxillaryMeasurement() {
-		return midaxillaryMeasurement;
+	public Double getChest() {
+		return chest;
 	}
 
-	public void setMidaxillaryMeasurement(Double midaxillaryMeasurement) {
-		this.midaxillaryMeasurement = midaxillaryMeasurement;
+	public void setChest(Double chest) {
+		this.chest = chest;
 	}
 
-	public Double getCalfMeasurement() {
-		return calfMeasurement;
+	public Double getMidaxillary() {
+		return midaxillary;
 	}
 
-	public void setCalfMeasurement(Double calfMeasurement) {
-		this.calfMeasurement = calfMeasurement;
+	public void setMidaxillary(Double midaxillary) {
+		this.midaxillary = midaxillary;
+	}
+
+	public Double getCalf() {
+		return calf;
+	}
+
+	public void setCalf(Double calf) {
+		this.calf = calf;
 	}
 
 	public Double getBodyDensity() {
@@ -124,34 +155,34 @@ public class BodyComposition implements Serializable {
 	}
 
 	public Double getBodyFat() {
-		return BodyFat;
+		return bodyFat;
 	}
 
 	public void setBodyFat(Double bodyFat) {
-		BodyFat = bodyFat;
+		this.bodyFat = bodyFat;
 	}
 
 	public Double getBodyFreeFat() {
-		return BodyFreeFat;
+		return bodyFreeFat;
 	}
 
 	public void setBodyFreeFat(Double bodyFreeFat) {
-		BodyFreeFat = bodyFreeFat;
+		this.bodyFreeFat = bodyFreeFat;
 	}
 
 	public Double getBodyFatWeight() {
-		return BodyFatWeight;
+		return bodyFatWeight;
 	}
 
 	public void setBodyFatWeight(Double bodyFatWeight) {
-		BodyFatWeight = bodyFatWeight;
+		this.bodyFatWeight = bodyFatWeight;
 	}
 
 	public Double getBodyFreeFatWeight() {
-		return BodyFreeFatWeight;
+		return bodyFreeFatWeight;
 	}
 
 	public void setBodyFreeFatWeight(Double bodyFreeFatWeight) {
-		BodyFreeFatWeight = bodyFreeFatWeight;
+		this.bodyFreeFatWeight = bodyFreeFatWeight;
 	}
 }
